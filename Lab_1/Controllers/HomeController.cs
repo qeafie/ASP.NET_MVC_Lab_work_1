@@ -13,23 +13,11 @@ namespace Lab_1.Controllers
             return View();
         }
 
-        public ActionResult About()
+
+        public ViewResult SignIn()
         {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult SighIn()
-        {
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
+            int hour = DateTime.Now.Hour;
+            ViewBag.Greeting = hour < 12 ? "Доброе утро" : "Доброго дня";
             return View();
         }
     }
