@@ -1,0 +1,49 @@
+﻿@model Lab_1.Models.InputModel
+
+@{
+    ViewBag.Title = "Success";
+}
+
+<div class="">
+
+
+    <div class="col-md-4">
+
+    </div>
+
+    <div class="col-md-4 div-neumorphism">
+        <h1>
+            Набор значений
+        </h1>
+        <br />
+
+        @{Html.BeginForm("Index", "PersonalAccount", FormMethod.Post, new { @class = "form-sign-in" }); }
+        <div class="form-group">
+            @Html.LabelFor(m => m.Text)
+            @Html.TextBoxFor(m => m.Text, new { @class = "form-elem form-control center-block" })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.ListBoxValues)
+            @Html.ListBoxFor(m => m.ListBoxValues, new MultiSelectList(new string[] { "Audi", "Bmw", "Volvo" }), new { @class = "form-elem form-control center-block" })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.DropdownListValues)
+            @Html.DropDownListFor(m => m.DropdownListValues, new SelectList(new string[] { "Linux", "Mac OS", "Windows" }), new { @class = "form-elem form-control center-block" })
+
+        </div>
+        <button type="submit" id="login_button" class="form-elem btn btn-primary">Войти</button>
+        @{Html.EndForm();}
+    </div>
+
+    <div class="col-md-4">
+    </div>
+</div>
+@section Scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
