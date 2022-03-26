@@ -1,0 +1,62 @@
+﻿@model Lab_1.Models.User
+
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="">
+
+
+    <div class="col-md-4">
+
+    </div>
+
+    <div class="col-md-4 div-neumorphism">
+        <h1>
+            Форма регистрации
+        </h1>
+        <h5>
+            Создайте свой аккаунт. Это займет минуту вашего времени.
+        </h5>
+        <br />
+        <form action="~/Register/Register" method="post" name="register_form" target="_self" class="form-sign-in">
+            <div class="form-group">
+                <label>Ваш логин</label>
+                <input type="text" name="login" id="login" placeholder="login" class="form-elem form-control center-block">
+            </div>
+
+            <div class="form-group">
+                <label>Ваш email</label>
+                <input type="text" name="email" id="email" placeholder="email" class="form-elem form-control center-block">
+            </div>
+
+            <div class="form-group">
+                <label>Ваш пароль</label>
+                <input type="password" name="password" id="password" placeholder="password" class="form-elem form-control center-block">
+            </div>
+
+            <div class="form-group">
+                <label>Повторите пороль</label>
+                <input type="password" name="passwordRepeat" id="passwordRepeat" placeholder="password repeat" class="form-elem form-control center-block">
+            </div>
+
+            <div class="form-group">
+                <label>Ваш возраст</label>
+                <input type="text" name="age" id="age" placeholder="age" class="form-elem form-control center-block">
+            </div>
+
+
+            <br />
+            <button type="submit" id="register_button" class="form-elem btn btn-primary">Зарегистрироваться</button>
+            <br />
+            <p>Уже есть аккаунт?</p>
+            <button type="button" id="signIn_button" class="form-elem btn btn-secondary" onclick="location.href='@Url.Action("Index","Home")'">Войти</button>
+
+        </form>
+    </div>
+
+    <div class="col-md-4">
+    </div>
+</div>
+

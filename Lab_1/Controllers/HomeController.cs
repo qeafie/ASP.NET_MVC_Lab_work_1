@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lab_1.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,12 +14,25 @@ namespace Lab_1.Controllers
             return View();
         }
 
-
-        public ViewResult SignIn()
+        [HttpGet]
+        public ActionResult SignIn()
         {
-            int hour = DateTime.Now.Hour;
-            ViewBag.Greeting = hour < 12 ? "Доброе утро" : "Доброго дня";
+           
             return View();
         }
+
+        [HttpPost]
+        public ActionResult SignIn(User response, string login,string password)
+        {
+            if (!Models.User.IsValid(login, password))
+            {
+                Console.WriteLine("post  fail");
+                return View("Index");
+            }
+            else
+                return View("Success",Models.User.GetUser(login));
+        }
+
+       
     }
 }
