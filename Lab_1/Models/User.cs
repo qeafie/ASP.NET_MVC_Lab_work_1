@@ -14,24 +14,6 @@ namespace Lab_1.Models
             { "rat", new User("rat", "123","rat@ya.ru",36)},
         };
 
-        private const string V = "[a - zA - z])(.+)([a - zA - z])@((g)? mail|yahoo|rambler|yandex|ya)[\\.](ru|com)$)]";
-
-        [Required(ErrorMessage ="Некоректный логин")]
-        [RegularExpression (@"^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$", ErrorMessage = "Используете только латинские буквы и цифры")]
-        //[StringLength (25, ErrorMessage = "Логин не должен быть более 25 символов")]
-        public string Login;
-
-        [Required(ErrorMessage = "Некоректный пароль")]
-        [RegularExpression(@"^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$", ErrorMessage = "Используете только латинские буквы и цифры")]
-        public string Password;
-
-        [Required(ErrorMessage = "Некоректный email")]
-        [RegularExpression (V, ErrorMessage = "Некоректный email")]
-        public string Email;
-
-        [Required(ErrorMessage = "Некоректный возраст")]
-        [Range (18,65,ErrorMessage ="Возраст должен быть в диапазоне от 18 до 65")]
-        public int Age;
         
         public string GetLogin()
         {
