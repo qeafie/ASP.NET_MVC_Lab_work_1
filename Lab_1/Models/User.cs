@@ -9,49 +9,41 @@ namespace Lab_1.Models
     public class User
     {
         private static Dictionary<String, User> dictionary = new Dictionary<string, User>() {
-            { "cat", new User("cat", "123","cat@mail.ru",22)},
-            { "dog", new User("dog", "123","dog@gmail.ru",28)},
-            { "rat", new User("rat", "123","rat@ya.ru",36)},
+            { "cat", new User("cat", "a123","cat@mail.ru",22)},
+            { "dog", new User("dog", "b123","dog@gmail.ru",28)},
+            { "rat", new User("rat", "c123","rat@ya.ru",36)},
         };
 
+        
+        
+        
 
-        private const string V = "[a - zA - z])(.+)([a - zA - z])@((g)? mail|yahoo|rambler|yandex|ya)[\\.](ru|com)$)]";
-
-        [Required(ErrorMessage ="Некоректный логин")]
-        [RegularExpression (@"^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$", ErrorMessage = "Используете только латинские буквы и цифры")]
+        [Required(ErrorMessage = "Некоректный логин")]
+        [RegularExpression(@"^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$", ErrorMessage = "Используете только латинские буквы и цифры")]
+        [Display(Name = "Логин")]
         //[StringLength (25, ErrorMessage = "Логин не должен быть более 25 символов")]
-        public string Login;
+        public string Login { get; set; }
 
         [Required(ErrorMessage = "Некоректный пароль")]
+        [DataType(DataType.Password)]
         [RegularExpression(@"^[a-zA-Z][a-zA-Z0-9-_\.]{1,20}$", ErrorMessage = "Используете только латинские буквы и цифры")]
-        public string Password;
+        public string Password { get; set; }
+
+        [Required(ErrorMessage = "Некоректный пароль")]
+        [DataType(DataType.Password)]
+        [Compare("Password",ErrorMessage ="Пароли должны совпадать")]
+        public string PasswordRepeat { get; set; }
 
         [Required(ErrorMessage = "Некоректный email")]
-        [RegularExpression (V, ErrorMessage = "Некоректный email")]
-        public string Email;
+        [RegularExpression (@"([a-zA-z])(.+)([a-zA-z])@((g)?mail|yahoo|rambler|yandex|ya)[\.](ru|com)$", ErrorMessage = "Некоректный email")]
+        public string Email { get; set; }
 
         [Required(ErrorMessage = "Некоректный возраст")]
         [Range (18,65,ErrorMessage ="Возраст должен быть в диапазоне от 18 до 65")]
-        public int Age;
+        public int Age { get; set; }
 
-        
-        public string GetLogin()
-        {
-            return Login;
-        }
-        public string GetPassword()
-        {
-            return Password;
-        }
-        public string GetEmail()
-        {
-            return Email;
-        }
 
-        public int GetAge()
-        {
-            return Age;
-        }
+
 
 
         public User(string login, string password, string email, int age) {
@@ -69,21 +61,30 @@ namespace Lab_1.Models
             login = login.ToLower();
             if (dictionary.ContainsKey(login))
             {
-                if (dictionary[login].GetPassword().Equals(password)) {                
+                if (dictionary[login].Password.Equals(password)) {                
                     return true;
                 }
             }
             return false;
         }
 
-        public static void SetUser(User user)
+        public static bool SetUser(User user)
         {
-            dictionary.Add(user.Login.ToLower(),user);
+            if (dictionary[user.Login] != null) {
+                dictionary.Add(user.Login.ToLower(), user);
+                return true;
+            }
+            return false;
+            
         }
         public static User GetUser(string key)
         {
             return dictionary[key];
         }
         
+        public static bool CheckUser(string key)
+        {
+            return dictionary.ContainsKey(key);
+        }
     }
 }

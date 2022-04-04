@@ -9,28 +9,39 @@ namespace Lab_1.Controllers
 {
     public class SignInController : Controller
     {
+        [HttpGet]
         public ActionResult Index()
         {
+            
             return View();
         }
 
-        [HttpGet]
-        public ActionResult SignIn()
-        {
+        //[HttpGet]
+        //public ActionResult SignIn()
+        //{
            
-            return View();
-        }
+          //  return View();
+        //}
 
         [HttpPost]
-        public ActionResult SignIn(User response, string login,string password)
+        public ActionResult Index(User model, string login,string password)
         {
-            if (!Models.User.IsValid(login, password))
-            {             
+             
+            
+            if (Models.User.IsValid(login, password))
+            {
+                
+                return View("PersonalAccount");
+            }
+            else {
+                if (Models.User.CheckUser(login))
+                {
+                    return View("LoginFailed");
+                }
                 return View("Index");
             }
-            else
-                //return View("PersonalAccount",Models.User.GetUser(login));
-                return View("PersonalAccount");
+            
+            
         }
 
        

@@ -173,6 +173,9 @@
     <Content Include="Views\Shared\PersonalAccount.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
     <Content Include="Views\SignIn\SignIn.cshtml" />
+    <Content Include="Views\Register\RegisterSuccess.cshtml" />
+    <Content Include="Views\Register\RegisterFailed.cshtml" />
+    <Content Include="Views\SignIn\LoginFailed.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

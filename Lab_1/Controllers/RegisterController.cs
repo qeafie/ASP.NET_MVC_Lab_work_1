@@ -19,14 +19,12 @@ namespace Lab_1.Controllers
         [HttpPost]
         public ActionResult Register(User user)
         {
-            if (true)
+            if (ModelState.IsValid)
             {
-                Lab_1.Models.User.SetUser(user);
-                return View("RegisterSuccess", User);
+                return View("RegisterSuccess");
+ 
             }
-            else {
-                return View();
-            }
+            return View();
             
         }
     }
