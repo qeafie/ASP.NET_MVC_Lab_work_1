@@ -7,7 +7,7 @@ using System.Web.Mvc;
 
 namespace Lab_1.Controllers
 {
-    public class HomeController : Controller
+    public class SignInController : Controller
     {
         public ActionResult Index()
         {
@@ -25,12 +25,12 @@ namespace Lab_1.Controllers
         public ActionResult SignIn(User response, string login,string password)
         {
             if (!Models.User.IsValid(login, password))
-            {
-                Console.WriteLine("post  fail");
+            {             
                 return View("Index");
             }
             else
-                return View("Success",Models.User.GetUser(login));
+                //return View("PersonalAccount",Models.User.GetUser(login));
+                return View("PersonalAccount");
         }
 
        

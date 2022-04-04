@@ -1,6 +1,12 @@
-﻿body {
+﻿html, body {
+    height: 100%;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
+    background-color: #8BC6EC;
+    background: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%) no-repeat;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -21,4 +27,24 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+
+.div-neumorphism {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 50px;
+    background: #8BC6EC;
+    box-shadow: 32px 32px 68px #6a96b3, -32px -32px 68px #acf6ff;
+}
+
+
+
+.form-sign-in {
+    text-align:center;
+}
+
+.form-elem {
+    
+    margin-bottom:10px;
 }
