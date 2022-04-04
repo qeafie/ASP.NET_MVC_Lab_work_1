@@ -14,7 +14,7 @@ namespace Lab_1.Models
             { "rat", new User("rat", "123","rat@ya.ru",36)},
         };
 
-
+        
         private const string V = "[a - zA - z])(.+)([a - zA - z])@((g)? mail|yahoo|rambler|yandex|ya)[\\.](ru|com)$)]";
 
         [Required(ErrorMessage ="Некоректный логин")]
