@@ -13,7 +13,7 @@ namespace Lab_1.Controllers
         [HttpGet]
         public ActionResult Index()
         {
-            return View();
+            return View("PersonalAccount");
         }
         [HttpPost]
         public ActionResult Index(InputModel model)
